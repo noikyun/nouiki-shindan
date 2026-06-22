@@ -70,6 +70,14 @@ function answerQuestion(choice) {
 function showResult(){
 
     const total = scores.E + scores.I;
+    
+    const tuTotal = scores.T + scores.U;
+
+const tPercent =
+Math.round((scores.T / tuTotal) * 100) || 0;
+
+const uPercent =
+Math.round((scores.U / tuTotal) * 100) || 0;
 
     const ePercent =
         Math.round((scores.E / total) * 100);
@@ -112,13 +120,29 @@ function showResult(){
                     </div>
                 </div>
 
-                <p>I ${iPercent}%</p>
+<p>I ${iPercent}%</p>
 
-                <div class="bar">
-                    <div class="fill"
-                    style="width:${iPercent}%">
-                    </div>
-                </div>
+<div class="bar">
+    <div class="fill"
+    style="width:${iPercent}%">
+    </div>
+</div>
+
+<p>T ${tPercent}%</p>
+
+<div class="bar">
+    <div class="fill"
+    style="width:${tPercent}%">
+    </div>
+</div>
+
+<p>U ${uPercent}%</p>
+
+<div class="bar">
+    <div class="fill"
+    style="width:${uPercent}%">
+    </div>
+</div>
 
             </div>
 
