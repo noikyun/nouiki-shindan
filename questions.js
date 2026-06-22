@@ -1,3 +1,5 @@
+alert("questions loaded");
+
 const questions = [
 
 {
