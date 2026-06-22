@@ -1,37 +1,80 @@
+let currentQuestion = 0;
+
+let scoreE = 0;
+let scoreI = 0;
+
 document.addEventListener("DOMContentLoaded", () => {
 
-const startButton = document.getElementById("startButton");
+    const startButton = document.getElementById("startButton");
 
-startButton.addEventListener("click", () => {
+    startButton.addEventListener("click", () => {
 
-showQuestion(0);
+        showQuestion();
+
+    });
 
 });
 
-});
+function showQuestion() {
 
-function showQuestion(index){
+    const q = questions[currentQuestion];
 
-const q = questions[index];
+    document.querySelector(".container").innerHTML = `
 
-document.querySelector(".container").innerHTML = `
+        <h1>Q${q.id}</h1>
 
-<h1>Q${q.id}</h1>
+        <p class="subtitle">${q.question}</p>
 
-<p class="subtitle">
-${q.question}
-</p>
+        <button class="answer-btn" onclick="answerQuestion('A')">
+            ${q.a}
+        </button>
 
-<button class="answer-btn">
-${q.a}
-</button>
+        <br><br>
 
-<br><br>
+        <button class="answer-btn" onclick="answerQuestion('B')">
+            ${q.b}
+        </button>
 
-<button class="answer-btn">
-${q.b}
-</button>
+    `;
+}
 
-`;
+function answerQuestion(choice) {
 
+    if (choice === "A") {
+        scoreI++;
+    } else {
+        scoreE++;
+    }
+
+    currentQuestion++;
+
+    if (currentQuestion >= questions.length) {
+        showResult();
+        return;
+    }
+
+    showQuestion();
+}
+
+function showResult() {
+
+    const total = scoreE + scoreI;
+
+    const ePercent = Math.round((scoreE / total) * 100);
+    const iPercent = Math.round((scoreI / total) * 100);
+
+    const type = ePercent >= iPercent ? "E型" : "I型";
+
+    document.querySelector(".container").innerHTML = `
+
+        <h1>診断結果</h1>
+
+        <h2>${type}</h2>
+
+        <p>
+        E ${ePercent}%<br>
+        I ${iPercent}%
+        </p>
+
+    `;
 }
