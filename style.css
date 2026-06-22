@@ -45,3 +45,23 @@ h1 {
 #startButton:hover {
     transform: scale(1.05);
 }
+.answer-btn{
+
+width:100%;
+max-width:500px;
+
+padding:20px;
+
+font-size:20px;
+
+margin:10px auto;
+
+border:none;
+
+border-radius:12px;
+
+background:white;
+
+cursor:pointer;
+
+}
