@@ -1,16 +1,25 @@
 let currentQuestion = 0;
 
-let scoreE = 0;
-let scoreI = 0;
+let scores = {
+    E:0,
+    I:0,
+    T:0,
+    U:0,
+    S:0,
+    M:0,
+    C:0,
+    D:0,
+    Va:0,
+    Ds:0,
+    SM:0
+};
 
 document.addEventListener("DOMContentLoaded", () => {
 
     const startButton = document.getElementById("startButton");
 
     startButton.addEventListener("click", () => {
-
         showQuestion();
-
     });
 
 });
@@ -40,15 +49,17 @@ function showQuestion() {
 
 function answerQuestion(choice) {
 
-    if (choice === "A") {
-        scoreI++;
-    } else {
-        scoreE++;
+    const q = questions[currentQuestion];
+
+    if(choice === "A"){
+        scores[q.aScore]++;
+    }else{
+        scores[q.bScore]++;
     }
 
     currentQuestion++;
 
-    if (currentQuestion >= questions.length) {
+    if(currentQuestion >= questions.length){
         showResult();
         return;
     }
@@ -56,14 +67,18 @@ function answerQuestion(choice) {
     showQuestion();
 }
 
-function showResult() {
+function showResult(){
 
-    const total = scoreE + scoreI;
+    const total = scores.E + scores.I;
 
-    const ePercent = Math.round((scoreE / total) * 100);
-    const iPercent = Math.round((scoreI / total) * 100);
+    const ePercent =
+        Math.round((scores.E / total) * 100);
 
-    const type = ePercent >= iPercent ? "E型" : "I型";
+    const iPercent =
+        Math.round((scores.I / total) * 100);
+
+    let type =
+        scores.E >= scores.I ? "E型" : "I型";
 
     document.querySelector(".container").innerHTML = `
 
@@ -71,10 +86,9 @@ function showResult() {
 
         <h2>${type}</h2>
 
-        <p>
-        E ${ePercent}%<br>
-        I ${iPercent}%
-        </p>
+        <p>E ${ePercent}%</p>
+
+        <p>I ${iPercent}%</p>
 
     `;
 }
