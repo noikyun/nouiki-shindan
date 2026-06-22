@@ -80,15 +80,49 @@ function showResult(){
     let type =
         scores.E >= scores.I ? "E型" : "I型";
 
+    let title =
+        scores.E >= scores.I
+        ? "外的刺激優位型"
+        : "内的刺激優位型";
+
+    let description =
+        scores.E >= scores.I
+        ? "実際に起きる刺激から反応が始まりやすいタイプ"
+        : "予感や空気感から反応が始まりやすいタイプ";
+
     document.querySelector(".container").innerHTML = `
 
-        <h1>診断結果</h1>
+        <div class="result-card">
 
-        <h2>${type}</h2>
+            <h1>診断結果</h1>
 
-        <p>E ${ePercent}%</p>
+            <h2>${type}</h2>
 
-        <p>I ${iPercent}%</p>
+            <h3>${title}</h3>
+
+            <p>${description}</p>
+
+            <div class="bar-area">
+
+                <p>E ${ePercent}%</p>
+
+                <div class="bar">
+                    <div class="fill"
+                    style="width:${ePercent}%">
+                    </div>
+                </div>
+
+                <p>I ${iPercent}%</p>
+
+                <div class="bar">
+                    <div class="fill"
+                    style="width:${iPercent}%">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
 
     `;
 }
