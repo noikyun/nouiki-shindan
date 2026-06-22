@@ -1,17 +1,17 @@
 let currentQuestion = 0;
 
 let scores = {
-    E:0,
-    I:0,
-    T:0,
-    U:0,
-    S:0,
-    M:0,
-    C:0,
-    D:0,
-    Va:0,
-    Ds:0,
-    SM:0
+    E: 0,
+    I: 0,
+    T: 0,
+    U: 0,
+    S: 0,
+    M: 0,
+    C: 0,
+    D: 0,
+    Va: 0,
+    Ds: 0,
+    SM: 0
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -51,15 +51,15 @@ function answerQuestion(choice) {
 
     const q = questions[currentQuestion];
 
-    if(choice === "A"){
+    if (choice === "A") {
         scores[q.aScore]++;
-    }else{
+    } else {
         scores[q.bScore]++;
     }
 
     currentQuestion++;
 
-    if(currentQuestion >= questions.length){
+    if (currentQuestion >= questions.length) {
         showResult();
         return;
     }
@@ -67,36 +67,49 @@ function answerQuestion(choice) {
     showQuestion();
 }
 
-function showResult(){
+function showResult() {
 
-    const total = scores.E + scores.I;
-    
-    const tuTotal = scores.T + scores.U;
-
-const tPercent =
-Math.round((scores.T / tuTotal) * 100) || 0;
-
-const uPercent =
-Math.round((scores.U / tuTotal) * 100) || 0;
+    const totalEI = scores.E + scores.I;
+    const totalTU = scores.T + scores.U;
 
     const ePercent =
-        Math.round((scores.E / total) * 100);
+        Math.round((scores.E / totalEI) * 100) || 0;
 
     const iPercent =
-        Math.round((scores.I / total) * 100);
+        Math.round((scores.I / totalEI) * 100) || 0;
 
-    let type =
-        scores.E >= scores.I ? "E型" : "I型";
+    const tPercent =
+        Math.round((scores.T / totalTU) * 100) || 0;
 
-    let title =
-        scores.E >= scores.I
-        ? "外的刺激優位型"
-        : "内的刺激優位型";
+    const uPercent =
+        Math.round((scores.U / totalTU) * 100) || 0;
 
-    let description =
-        scores.E >= scores.I
-        ? "実際に起きる刺激から反応が始まりやすいタイプ"
-        : "予感や空気感から反応が始まりやすいタイプ";
+    const eiType =
+        scores.E >= scores.I ? "E" : "I";
+
+    const tuType =
+        scores.T >= scores.U ? "T" : "U";
+
+    const type =
+        eiType + tuType;
+
+    let title = "";
+
+    if (type === "ET") {
+        title = "欲望を理解されることで深まりやすいタイプ";
+    }
+
+    if (type === "EU") {
+        title = "導かれることで深まりやすいタイプ";
+    }
+
+    if (type === "IT") {
+        title = "想像を理解されることで深まりやすいタイプ";
+    }
+
+    if (type === "IU") {
+        title = "安心して委ねることで深まりやすいタイプ";
+    }
 
     document.querySelector(".container").innerHTML = `
 
@@ -108,8 +121,6 @@ Math.round((scores.U / tuTotal) * 100) || 0;
 
             <h3>${title}</h3>
 
-            <p>${description}</p>
-
             <div class="bar-area">
 
                 <p>E ${ePercent}%</p>
@@ -120,29 +131,29 @@ Math.round((scores.U / tuTotal) * 100) || 0;
                     </div>
                 </div>
 
-<p>I ${iPercent}%</p>
+                <p>I ${iPercent}%</p>
 
-<div class="bar">
-    <div class="fill"
-    style="width:${iPercent}%">
-    </div>
-</div>
+                <div class="bar">
+                    <div class="fill"
+                    style="width:${iPercent}%">
+                    </div>
+                </div>
 
-<p>T ${tPercent}%</p>
+                <p>T ${tPercent}%</p>
 
-<div class="bar">
-    <div class="fill"
-    style="width:${tPercent}%">
-    </div>
-</div>
+                <div class="bar">
+                    <div class="fill"
+                    style="width:${tPercent}%">
+                    </div>
+                </div>
 
-<p>U ${uPercent}%</p>
+                <p>U ${uPercent}%</p>
 
-<div class="bar">
-    <div class="fill"
-    style="width:${uPercent}%">
-    </div>
-</div>
+                <div class="bar">
+                    <div class="fill"
+                    style="width:${uPercent}%">
+                    </div>
+                </div>
 
             </div>
 
