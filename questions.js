@@ -6,6 +6,8 @@ axis:"EI",
 question:"どちらの方がゾクッとしやすい？",
 a:"始まる前の空気感",
 b:"実際に起きた刺激"
+aScore:"I",
+bScore:"E"
 },
 
 {
@@ -14,6 +16,8 @@ axis:"EI",
 question:"心が動きやすいのは？",
 a:"これから起こる予感",
 b:"実際に起きた出来事"
+aScore:"I",
+bScore:"E"
 },
 
 {
@@ -22,6 +26,8 @@ axis:"EI",
 question:"気になってしまうのは？",
 a:"まだ起きていない可能性",
 b:"今起きている現実"
+aScore:"I",
+bScore:"E"
 },
 
 {
@@ -30,6 +36,8 @@ axis:"EI",
 question:"反応しやすいのは？",
 a:"想像が膨らむ時",
 b:"刺激を受けた時"
+aScore:"I",
+bScore:"E"
 },
 
 {
@@ -38,6 +46,8 @@ axis:"EI",
 question:"ドキドキしやすいのは？",
 a:"何かが起こりそうな時",
 b:"何かが起こった時"
+aScore:"I",
+bScore:"E"
 },
 
 {
@@ -46,6 +56,8 @@ axis:"EI",
 question:"魅力を感じるのは？",
 a:"行間や空気感",
 b:"言葉や行動"
+aScore:"I",
+bScore:"E"
 },
 
 {
@@ -54,6 +66,8 @@ axis:"EI",
 question:"興奮しやすいのは？",
 a:"頭の中で想像した時",
 b:"実際に体験した時"
+aScore:"I",
+bScore:"E"
 },
 
 {
@@ -62,6 +76,8 @@ axis:"EI",
 question:"心を奪われるのは？",
 a:"雰囲気や余韻",
 b:"出来事そのもの"
+aScore:"I",
+bScore:"E"
 },
 
 {
@@ -70,6 +86,8 @@ axis:"EI",
 question:"印象に残りやすいのは？",
 a:"想像が広がった瞬間",
 b:"強い刺激を受けた瞬間"
+aScore:"I",
+bScore:"E"
 },
 
 {
@@ -78,6 +96,8 @@ axis:"EI",
 question:"どちらに近い？",
 a:"始まる前が好き",
 b:"始まった後が好き"
+aScore:"I",
+bScore:"E"
 }
 
 ];
